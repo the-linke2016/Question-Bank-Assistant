@@ -1,0 +1,40 @@
+{
+  "name": "Question Bank Assistant",
+  "description": "An efficient assistant for Question Bank of HFUT",
+  "version": "1.0.0",
+  "manifest_version": 2,
+  "homepage_url": "https://github.com/the-linke2016",
+  "browser_action": {
+		"default_title": "An efficient assistant for Question Bank of HFUT",
+    "default_popup": "index.html",
+    "default_icon": "images/icon.png"
+  },
+  "icons": {
+    "128": "images/icon.png",
+    "16": "images/icon.png",
+    "19": "images/icon.png",
+    "32": "images/icon.png",
+    "48": "images/icon.png"
+  },
+  "permissions": [
+    "storage",
+    "http://*.scctedu.com/*",
+    "https://*.scctedu.com/*",
+    "contextMenus",
+    "webRequest",
+    "proxy",
+    "http://qaquery.applinzi.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["http://*.scctedu.com/*", "https://*.scctedu.com/*"],
+      "js": ["scripts/contentscript.js", "scripts/jquery.min.js"],
+      "run_at": "document_end",
+      "all_frames": true
+    }
+  ],
+  "background": {
+    "persistent": true,
+    "scripts": ["scripts/jquery.min.js", "scripts/background.js"]
+  }
+}
